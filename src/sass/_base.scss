@@ -1,0 +1,12 @@
+p {
+
+}
+
+%sprite {
+    @include hide-text;
+    background: url('../img/sprite.png');
+    background-repeat: no-repeat;
+    background-size: 70px 31px;
+}
+
+.hide {display: none;}
