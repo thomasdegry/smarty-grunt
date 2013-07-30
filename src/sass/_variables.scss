@@ -1,0 +1,22 @@
+$orange : #ff6945;
+$yellow : #ffb637;
+$white : #efefef;
+$blue : #4e8588;
+
+$proxi-bold: 'proxima_nova_rgbold';
+
+@mixin font ($font-name, $color: $dark-blue, $size: 1em, $line-height: 1.45em, $bold: normal, $italic: normal) {
+    color: $color;
+    font: {
+        family: $font-name;
+        size: $size;
+        style: $italic;
+        weight: $bold;
+    }
+    text-transform: uppercase;
+    line-height: $line-height;
+}
+
+@mixin font-proxi-bold ($color: $blue, $size: 1em, $line-height: 1.1em, $bold: normal, $italic: normal) {
+    @include font($proxi-bold, $color, $size, $line-height, $bold, $italic);
+}

@@ -27,7 +27,7 @@ var App = (function () {
     return App;
 })();
 
-/* globals App:true */
-var app = new App($("#container"));
+/* globals Hello:true */
+var hello = new Hello($("#container"));
 
 })();

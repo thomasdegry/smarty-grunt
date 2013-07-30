@@ -1,5 +1,11 @@
-p {
+body {
+    background: url(../img/bg.jpg) repeat;
+    background-size: 180px;
+    border-top: 6px solid $orange;
+}
 
+p {
+    @include font-proxi-bold($yellow, 1em);
 }
 
 %sprite {

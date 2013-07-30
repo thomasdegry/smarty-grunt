@@ -1,0 +1,26 @@
+#logo {
+    @include hide-text();
+    width: 50%;
+    background: url(../img/logo.png) no-repeat top center;
+    height: 300px;
+    display: block;
+    background-size: 100%;
+    margin: 30px auto;
+
+    @media only screen and (max-width: 768px) {
+        height: 150px;
+    }
+
+    @media only screen and (max-width: 321px) {
+        height: 91px;
+        margin-bottom: 0px;
+    }
+}
+
+.scroll-down {
+    width: 100% !important;
+    @include box-sizing(border-box);
+    padding: 15px 10px 10px 10px;
+    text-align: center;
+    background-color: #565656;
+}

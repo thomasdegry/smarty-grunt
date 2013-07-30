@@ -1,6 +1,5 @@
 var jspaths = ['src/js-dev/Settings.js', 'src/js-dev/classes/**.js','src/js-dev/helpers.js','src/js-dev/main.js'];
 var csspaths = ["src/sass/*.scss", "src/sass/modules/*.scss"];
-var templatepaths = ["src/templates/*.hbs"];
 
 var concatpaths = ['src/js/templates.js'].concat(jspaths);
 
@@ -25,15 +24,11 @@ module.exports = function(grunt) {
     watch: {
       scripts:{
         files: jspaths,
-        tasks: ['jshint','handlebars','concat','clean']
+        tasks: ['jshint','concat']
       },
       css:{
         files: csspaths,
         tasks:['compass:development']
-      },
-      handlebars:{
-        files: templatepaths,
-        tasks: ['handlebars','concat','clean']
       }
     },
 
@@ -73,26 +68,10 @@ module.exports = function(grunt) {
           {
             expand: true,
             cwd: 'src/',
-            src: ['index.html','images/*','js/vendor/*'],
+            src: ['index.php','Classes/*', 'Controllers/*', 'dao/*', 'img/*', 'includes/*', 'smarty_templates/**', 'error/html', 'smarty_compile', 'js/vendor/*'],
             dest: 'out/'
           }
         ]
-      }
-    },
-
-    handlebars: {
-      compile: {
-        options: {
-          namespace: "tpl",
-          processName: function(filePath) {
-            var pieces = filePath.split("/");
-            return pieces[pieces.length - 1].split(".")[0];
-          },
-          partialsUseNamespace: true
-        },
-        files: {
-          "src/js/templates.js": templatepaths
-        }
       }
     },
 
@@ -113,7 +92,6 @@ module.exports = function(grunt) {
           globals:{
               $: true,
               console:true,
-              Handlebars:true,
               alert:true,
               tpl:true,
               _:true,
@@ -126,7 +104,6 @@ module.exports = function(grunt) {
       }
     },
 
-    clean: ['src/js/templates.js'],
 
   });
 
@@ -135,11 +112,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-copy');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-jshint');
 
-  grunt.registerTask('default', ['jshint','handlebars','concat','compass:development','clean','watch']);
-  grunt.registerTask('production', ['jshint','handlebars','uglify','compass:production','copy:production']);
+  grunt.registerTask('default', ['jshint','concat','compass:development','watch']);
+  grunt.registerTask('production', ['jshint','uglify','compass:production','copy:production']);
 
 };
